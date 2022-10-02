@@ -14,3 +14,13 @@ string arr = Console.ReadLine();
 string[] arrayOld = arr.Split(" ");
 
 arrayOld = arrayOld.Where(val => val != "").ToArray();
+
+int count = arrayOld.Length;
+
+for (int i = 0; i < count; i++)
+{
+    arrayOld[i] = $"\"{arrayOld[i]}\"";
+}
+
+string strOld = string.Join(", ", arrayOld);
+Console.Write($"[{strOld}] -> ");
