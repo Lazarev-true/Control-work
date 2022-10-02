@@ -18,7 +18,4 @@ if(arr.Contains("  "))
         arr = arr.Replace("  ", " ");
     }
 }
-if(arr.StartsWith(" "))
-    arr = arr.Remove(0, 1);
-if(arr.EndsWith(" "))
-    arr = arr.Remove(arr.Length - 1, 1);
+arr = arr.Trim(' ');
