@@ -10,3 +10,15 @@ int N;
 Console.WriteLine("Введите элементы массива через пробел, после ввода нажмите Enter");
 
 string arr = Console.ReadLine();
+
+if(arr.Contains("  "))
+{
+    while(arr.Contains("  "))
+    {
+        arr = arr.Replace("  ", " ");
+    }
+}
+if(arr.StartsWith(" "))
+    arr = arr.Remove(0, 1);
+if(arr.EndsWith(" "))
+    arr = arr.Remove(arr.Length - 1, 1);
