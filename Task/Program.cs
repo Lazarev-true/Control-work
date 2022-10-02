@@ -11,11 +11,6 @@ Console.WriteLine("Введите элементы массива через п�
 
 string arr = Console.ReadLine();
 
-if(arr.Contains("  "))
-{
-    while(arr.Contains("  "))
-    {
-        arr = arr.Replace("  ", " ");
-    }
-}
-arr = arr.Trim(' ');
+string[] arrayOld = arr.Split(" ");
+
+arrayOld = arrayOld.Where(val => val != "").ToArray();
