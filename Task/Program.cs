@@ -5,19 +5,26 @@
 // выполнения алгоритма. При решении не рекомендуется 
 // пользоваться коллекциями, лучше обойтись исключительно массивами.
 
-int N;
+int N = 3;
 
 Console.WriteLine("Введите элементы массива через пробел, после ввода нажмите Enter");
 
-string arr = Console.ReadLine();
-
-string[] arrayOld = arr.Split(" ");
+string oldStr = Console.ReadLine();
+string[] arrayOld = oldStr.Split(" ");
 
 arrayOld = arrayOld.Where(val => val != "").ToArray();
 
-int count = arrayOld.Length;
+int count1 = arrayOld.Length;
 
-for (int i = 0; i < count; i++)
+string newStr = "";
+
+for (int i = 0; i < count1; i++)
+{
+    if( arrayOld[i].Length <= N)
+        newStr += arrayOld[i] + " ";
+}
+
+for (int i = 0; i < count1; i++)
 {
     arrayOld[i] = $"\"{arrayOld[i]}\"";
 }
@@ -25,42 +32,21 @@ for (int i = 0; i < count; i++)
 string strOld = string.Join(", ", arrayOld);
 Console.Write($"[{strOld}] -> ");
 
-Random rand = new Random();
-
-if(count > 3)
-    N = rand.Next(4);
-else
-    N = rand.Next(count + 1);
-
-string[] arrayNew = new string[N];
-int[] number = new int[N];
-
-    if(N == 0)
+if(newStr == "")
     Console.Write($"[]");
 else
 {
-    number[0] = rand.Next(0, 4);
+    newStr = newStr.Remove(newStr.Length - 1, 1);
 
-    for (int i = 1; i < N;)
-{
-    int tmp = rand.Next(0, N);
-    int j;
-    for (j = 0; j < i; j++)
-    {
-        if (tmp == number[j])
-        break;
-    }
-    if (j == i)
-    { 
-        number[i] = tmp;
-        i++; 
-    }
-}
+    string[] arrayNew = newStr.Split(" ");
 
-    for (int i = 0; i < N; i++)
+    int count2 = arrayNew.Length;
+
+    for (int i = 0; i < count2; i++)
     {
-        arrayNew[i] = arrayOld[number[i]]; 
+        arrayNew[i] = $"\"{arrayNew[i]}\"";
     }
+
     string strNew = string.Join(", ", arrayNew);
     Console.Write($"[{strNew}]");
 }
